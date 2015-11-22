@@ -7,4 +7,3 @@ requires 'namespace::autoclean';
 requires 'YAML';
 requires 'DBIx::Class';
 requires 'DBIx::Class::TimeStamp';
-requires 'Modern::Perl';

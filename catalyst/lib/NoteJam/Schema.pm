@@ -1,6 +1,7 @@
 package NoteJam::Schema;
 
-use Modern::Perl qw/2012/;
+use strict;
+use warnings;
 use parent 'DBIx::Class::Schema';
 
 __PACKAGE__->load_namespaces;
