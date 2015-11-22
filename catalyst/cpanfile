@@ -1,9 +1,12 @@
-requires 'Catalyst::Runtime';
+requires 'Catalyst::Action::RenderView';
+requires 'Catalyst::Authentication::Store::DBIx::Class';
+requires 'Catalyst::Plugin::Authentication';
 requires 'Catalyst::Plugin::ConfigLoader';
 requires 'Catalyst::Plugin::Static::Simple';
-requires 'Catalyst::Action::RenderView';
+requires 'Catalyst::Runtime';
+requires 'DBIx::Class';
+requires 'DBIx::Class::EncodedColumn';'
+requires 'DBIx::Class::TimeStamp';
 requires 'Moose';
 requires 'namespace::autoclean';
 requires 'YAML';
-requires 'DBIx::Class';
-requires 'DBIx::Class::TimeStamp';
