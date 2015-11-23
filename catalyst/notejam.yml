@@ -1,0 +1,3 @@
+Model::NoteJam:
+    connect_info:
+        dsn: dbi:SQLite:dbname=__path_to(root/notejam.db)__

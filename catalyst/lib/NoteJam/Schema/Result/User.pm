@@ -14,7 +14,7 @@ __PACKAGE__->add_columns(
         size          => 128,
         encode_column => 1,
         encode_class  => 'Digest',
-        encode_args   => {algorithm => 'SHA-1', format => 'hex'},
+        encode_args   => {algorithm => 'SHA-1'},
     },
 );
 __PACKAGE__->set_primary_key('id');
