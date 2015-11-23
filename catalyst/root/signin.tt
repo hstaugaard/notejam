@@ -1,0 +1,15 @@
+[% page_title = 'Sign In' %]
+<div class="sixteen columns content-area">
+    <!--<div class="alert-area">-->
+    <!--<div class="alert alert-error">Wrong password or email</div>-->
+    <!--</div>-->
+    <form class="offset-by-six sign-in">
+        <label for="email">Email</label>
+        <input type="text" id="email">
+        <label for="password">Password</label>
+        <input type="password" id="password">
+        <input type="submit" value="Sign In"> or <a href="[% c.uri_for_action('/signup') %]">Sign up</a>
+        <hr />
+        <p><a href="[% c.uri_for_action('/forgot_password') %]" class="small-red">Forgot password?</a></p>
+    </form>
+</div>

@@ -2,7 +2,7 @@ package NoteJam;
 
 use Moose;
 use namespace::autoclean;
-use Catalyst::Runtime 5.90;
+use Catalyst::Runtime 5.90080;
 use Catalyst qw/
     ConfigLoader
     Static::Simple
@@ -10,6 +10,7 @@ use Catalyst qw/
     Session
     Session::Store::File
     Session::State::Cookie
+    SmartURI
 /;
 
 extends 'Catalyst';
@@ -17,7 +18,11 @@ extends 'Catalyst';
 our $VERSION = '0.01';
 
 __PACKAGE__->config(
-    name => 'NoteJam',
+    name         => 'NoteJam',
+    default_view => 'HTML',
+    'Plugin::SmartURI' => {
+        disposition => 'relative',
+    },
     'Plugin::Authentication' => {
         default => {
             credential => {

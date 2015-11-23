@@ -14,7 +14,6 @@ sub signup :Local :Args(0) {
 
 sub signin :Local :Args(0) {
     my ($self, $c) = @_;
-    ...
 }
 
 sub signout :Local :Args(0) {
