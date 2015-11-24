@@ -10,7 +10,7 @@ sub auto :Private {
     my ($self, $c) = @_;
     if (!$c->user_exists) {
         $c->res->redirect($c->uri_for_action('/signin'));
-        $c->detach;
+        return 0;
     }
     return 1;
 }
