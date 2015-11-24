@@ -14,6 +14,11 @@ sub auto :Private {
     }
 }
 
+sub notes :Path('/') :Args(0) {
+    my ($self, $c) = @_;
+    ...
+}
+
 sub create :Local :Args(0) {
     my ($self, $c) = @_;
     ...

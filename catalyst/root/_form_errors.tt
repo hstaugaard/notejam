@@ -1,0 +1,7 @@
+[% IF f.has_form_errors%]
+    <div class="alert-area">
+        [% FOR error IN f.form_errors %]
+            <div class="alert alert-error">[% error %]</div>
+        [% END %]
+    </div>
+[% END %]

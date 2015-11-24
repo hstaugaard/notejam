@@ -3,4 +3,4 @@ Model::NoteJam:
         dsn: dbi:SQLite:dbname=__path_to(root/notejam.db)__
         
 View::HTML:
-    WRAPPER: layout.tt
+    WRAPPER: _layout.tt
