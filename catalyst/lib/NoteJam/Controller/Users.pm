@@ -6,6 +6,13 @@ use NoteJam::Form::Signin;
 
 BEGIN {extends 'Catalyst::Controller'}
 
+has signin_form => (
+    isa     => 'NoteJam::Form::Signin',
+    is      => 'ro',
+    lazy    => 1,
+    default => sub {NoteJam::Form::Signin->new},
+);
+
 __PACKAGE__->config(namespace => '');
 
 sub signup :Local :Args(0) {
@@ -15,16 +22,15 @@ sub signup :Local :Args(0) {
 
 sub signin :Local :Args(0) {
     my ($self, $c) = @_;
-    my $form = NoteJam::Form::Signin->new;
-    if ($c->req->method eq 'POST' && $form->process(params => $c->req->params)) {
+    if ($self->signin_form->process(params => $c->req->params)) {
         $c->authenticate({
-            email    => $form->field('email')->value,
-            password => $form->field('password')->value,
+            email    => $self->signin_form->field('email')->value,
+            password => $self->signin_form->field('password')->value,
         });
         return $c->res->redirect($c->uri_for_action('/notes/notes')) if $c->user_exists;
-        $form->add_form_error('Wrong email or password');
+        $self->signin_form->add_form_error('Wrong email or password');
     }
-    $c->stash(f => $form);
+    $c->stash(f => $self->signin_form);
 }
 
 sub signout :Local :Args(0) {

@@ -1,9 +1,11 @@
 [% page_title = 'All notes (' _ notes.size _ ')' %]
 [% PROCESS _pads.tt %]
 <div class="thirteen columns content-area">
-    <!--<div class="alert-area">-->
-      <!--<div class="alert alert-success">Note is sucessfully saved</div>-->
-    <!--</div>-->
+    [% IF status_msg %]
+        <div class="alert-area">
+           <div class="alert alert-success">[% status_msg %]</div>
+        </div>
+    [% END %]
     [% IF notes.size %]
         <table class="notes">
             <tr>

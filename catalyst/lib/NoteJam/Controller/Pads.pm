@@ -2,22 +2,48 @@ package NoteJam::Controller::Pads;
 
 use Moose;
 use namespace::autoclean;
+use NoteJam::Form::Pad;
 
 BEGIN {extends 'Catalyst::Controller'}
 
+has pad_form => (
+    isa     => 'NoteJam::Form::Pad',
+    is      => 'ro',
+    lazy    => 1,
+    default => sub {NoteJam::Form::Pad->new},
+);
+
 sub auto :Private {
     my ($self, $c) = @_;
-    return $c->res->redirect($c->uri_for_action('/users/signin')) unless $c->user_exists;
+    if (!$c->user_exists) {
+        $c->res->redirect($c->uri_for_action('/signin'));
+        $c->detach;
+    }
+    return 1;
 }
 
 sub create :Local :Args(0) {
     my ($self, $c) = @_;
-    ...
+    my $pad = $c->user->new_related('pads', {});
+    if ($self->pad_form->process(item => $pad, params => $c->req->params)) {
+        return $c->res->redirect($c->uri_for_action(
+            '/notes/notes',
+            {mid => $c->set_status_msg('Pad is successfully created')}
+        ));
+
+    }
+    $c->stash(
+        f    => $self->pad_form,
+        pads => [$c->user->pads],
+    );
 }
 
 sub pad :PathPrefix :Chained :CaptureArgs(1) {
-    my ($self, $c) = @_;
-    ...
+    my ($self, $c, $pad_id) = @_;
+    $c->stash(
+        pad  => $c->user->find_related('pads', $pad_id),
+        pads => [$c->user->pads],
+    );
 }
 
 sub view :PathPart('') :Chained('pad') :Args(0) {

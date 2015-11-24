@@ -8,7 +8,10 @@ BEGIN {extends 'Catalyst::Controller'}
 
 sub auto :Private {
     my ($self, $c) = @_;
-    return $c->res->redirect($c->uri_for_action('/signin')) unless $c->user_exists;
+    if (!$c->user_exists) {
+        $c->res->redirect($c->uri_for_action('/signin'));
+        $c->detach;
+    }
     return 1;
 }
 
@@ -18,6 +21,7 @@ sub notes :Path('/') :Args(0) {
     if ($c->req->param('order') =~ /\A(-?)(name|updated_at)\z/) {
         $order->{$1 eq '-' ? '-desc' : '-asc'} = $2;
     }
+    $c->load_status_msgs;
     $c->stash(
         pads  => [$c->user->pads],
         notes => [$c->user->notes->search(undef, {order_by => $order})],
