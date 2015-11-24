@@ -1,20 +1,5 @@
 [% page_title = 'All notes (' _ notes.size _ ')' %]
-<div class="three columns">
-    <h4 id="logo">My pads</h4>
-    <nav>
-        [% IF pads.size %]
-            <ul>
-                [% FOR pad IN pads %]
-                    <li><a href="[% c.uri_for_action('/pads/view', [pad.id]) %]">[% pad.name %]</a></li>
-                [% END %]
-            </ul>
-        [% ELSE %]
-            <p class="empty">No pads</p>
-        [% END %]
-        <hr />
-        <a href="[% c.uri_for_action('/pads/create') %]">New pad</a>
-    </nav>
-</div>
+[% PROCESS _pads.tt %]
 <div class="thirteen columns content-area">
     <!--<div class="alert-area">-->
       <!--<div class="alert alert-success">Note is sucessfully saved</div>-->
