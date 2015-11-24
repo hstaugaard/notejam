@@ -8,6 +8,7 @@ requires 'Catalyst::Plugin::Session::State::Cookie';
 requires 'Catalyst::Plugin::Session::Store::File';
 requires 'Catalyst::Plugin::SmartURI';
 requires 'Catalyst::Plugin::Static::Simple';
+requires 'Catalyst::Plugin::StatusMessage';
 requires 'Catalyst::Runtime' => '5.90080';
 requires 'Catalyst::View::Email';
 requires 'Catalyst::View::TT';

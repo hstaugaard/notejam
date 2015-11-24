@@ -19,7 +19,7 @@ __PACKAGE__->add_columns(
 );
 __PACKAGE__->set_primary_key('id');
 __PACKAGE__->add_unique_constraint('email_unique', ['email']);
-__PACKAGE__->has_many(notes => 'NoteJam::Schema::Result::Note', 'user_id');
-__PACKAGE__->has_many(pads => 'NoteJam::Schema::Result::Pad', 'user_id');
+__PACKAGE__->has_many(notes => 'NoteJam::Schema::Result::Note', 'user_id', {order_by => {-asc => 'updated_at'}});
+__PACKAGE__->has_many(pads => 'NoteJam::Schema::Result::Pad', 'user_id', {order_by => {-asc => 'name'}});
 
 1;

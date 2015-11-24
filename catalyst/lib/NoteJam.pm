@@ -11,6 +11,7 @@ use Catalyst qw/
     Session::Store::File
     Session::State::Cookie
     SmartURI
+    StatusMessage
 /;
 
 extends 'Catalyst';

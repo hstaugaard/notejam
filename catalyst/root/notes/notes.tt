@@ -1,0 +1,47 @@
+[% page_title = 'All notes (' _ notes.size _ ')' %]
+<div class="three columns">
+    <h4 id="logo">My pads</h4>
+    <nav>
+        [% IF pads.size %]
+            <ul>
+                [% FOR pad IN pads %]
+                    <li><a href="[% c.uri_for_action('/pads/view', [pad.id]) %]">[% pad.name %]</a></li>
+                [% END %]
+            </ul>
+        [% ELSE %]
+            <p class="empty">No pads</p>
+        [% END %]
+        <hr />
+        <a href="[% c.uri_for_action('/pads/create') %]">New pad</a>
+    </nav>
+</div>
+<div class="thirteen columns content-area">
+    <!--<div class="alert-area">-->
+      <!--<div class="alert alert-success">Note is sucessfully saved</div>-->
+    <!--</div>-->
+    [% IF notes.size %]
+        <table class="notes">
+            <tr>
+                <th class="note">Note <a href="[% c.uri_for_action('/notes/notes', {order =>'name'}) %]" class="sort_arrow" >&uarr;</a><a href="[% c.uri_for_action('/notes/notes', {order =>'-name'}) %]" class="sort_arrow" >&darr;</a></th>
+                <th>Pad</th>
+                <th class="date">Last modified <a href="[% c.uri_for_action('/notes/notes', {order =>'updated_at'}) %]" class="sort_arrow" >&uarr;</a><a href="[% c.uri_for_action('/notes/notes', {order =>'-updated_at'}) %]" class="sort_arrow" >&darr;</a></th>
+            </tr>
+            [% FOR note IN notes %]
+                <tr>
+                    <td><a href="[% c.uri_for_action('/notes/view', [note.id]) %]">[% note.name %]</a></td>
+                    <td class="pad">
+                        [% IF note.pad %]
+                            <a href="[% c.uri_for_action('/pads/view', [note.pad.id]) %]">[% note.pad.name %]</a>
+                        [% ELSE %]
+                            No pad
+                        [% END %]
+                    </td>
+                    <td class="hidden-text date">[% smart_date(note.updated_at) %]</td>
+                </tr>
+            [% END %]
+        </table>
+    [% ELSE %]
+        <p class="empty">Create your first note.</p>
+    [% END %]
+    <a href="[% c.uri_for_action('/notes/create') %]" class="button">New note</a>
+</div>
