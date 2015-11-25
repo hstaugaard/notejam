@@ -11,10 +11,7 @@ __PACKAGE__->add_columns(
     name    => {data_type => 'varchar', size => 100},
 );
 __PACKAGE__->set_primary_key('id');
-__PACKAGE__->has_many(
-    notes => 'NoteJam::Schema::Result::Note',
-    {'foreign.pad_id' => 'self.id', 'foreign.user_id' => 'self.user_id'},
-);
+__PACKAGE__->has_many(notes => 'NoteJam::Schema::Result::Note', 'pad_id');
 __PACKAGE__->belongs_to(
     user => 'NoteJam::Schema::Result::User',
     'user_id',

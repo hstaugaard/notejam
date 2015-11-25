@@ -18,7 +18,7 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key('id');
 __PACKAGE__->belongs_to(
     pad => 'NoteJam::Schema::Result::Pad',
-    {id => 'pad_id', user_id => 'user_id'},
+    'pad_id',
     {on_delete => 'CASCADE', on_update => 'CASCADE'},
 );
 __PACKAGE__->belongs_to(

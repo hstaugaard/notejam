@@ -10,5 +10,4 @@ has_field name => (
     type => 'Text',
 );
 
-
 1;

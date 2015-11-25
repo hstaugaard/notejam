@@ -1,0 +1,10 @@
+[% page_title = 'New note' %]
+[% PROCESS _pads.tt %]
+<div class="thirteen columns content-area">
+    <form class="note" method="post">
+        [% f.field('name').render %]
+        [% f.field('text').render %]
+        [% f.field('pad').render %]
+        <input type="submit" value="Save">
+    </form>
+</div>

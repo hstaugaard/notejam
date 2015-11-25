@@ -6,13 +6,6 @@ use NoteJam::Form::Pad;
 
 BEGIN {extends 'Catalyst::Controller'}
 
-has pad_form => (
-    isa     => 'NoteJam::Form::Pad',
-    is      => 'ro',
-    lazy    => 1,
-    default => sub {NoteJam::Form::Pad->new},
-);
-
 sub auto :Private {
     my ($self, $c) = @_;
     if (!$c->user_exists) {
@@ -25,14 +18,15 @@ sub auto :Private {
 sub create :Local :Args(0) {
     my ($self, $c) = @_;
     my $pad = $c->user->new_related('pads', {});
-    if ($self->pad_form->process(item => $pad, params => $c->req->params)) {
+    my $form = NoteJam::Form::Pad->new;
+    if ($form->process(item => $pad, params => $c->req->params)) {
         return $c->res->redirect($c->uri_for_action(
             '/notes/notes',
             {mid => $c->set_status_msg('Pad is successfully created')},
         ));
 
     }
-    $c->stash(f => $self->pad_form);
+    $c->stash(f => $form);
 }
 
 sub pad :PathPrefix :Chained :CaptureArgs(1) {
