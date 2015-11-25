@@ -20,7 +20,8 @@ sub create :Local :Args(0) {
     my $form = NoteJam::Form::Pad->new(item => $c->user->new_related('pads', {}));
     if ($form->process(params => $c->req->params)) {
         return $c->res->redirect($c->uri_for_action(
-            '/notes/notes',
+            '/pads/view',
+            [$form->item->id],
             {mid => $c->set_status_msg('Pad is successfully created')},
         ));
     }
