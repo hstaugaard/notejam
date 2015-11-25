@@ -27,7 +27,12 @@ sub signin :Local :Args(0) {
             email    => $self->signin_form->field('email')->value,
             password => $self->signin_form->field('password')->value,
         });
-        return $c->res->redirect($c->uri_for_action('/notes/notes')) if $c->user_exists;
+        if ($c->user_exists) {
+            return $c->res->redirect($c->uri_for_action(
+                '/notes/notes',
+                {mid => $c->set_status_msg('You are signed in!')},
+            ));
+        }
         $self->signin_form->add_form_error('Wrong email or password');
     }
     $c->stash(f => $self->signin_form);
@@ -35,7 +40,8 @@ sub signin :Local :Args(0) {
 
 sub signout :Local :Args(0) {
     my ($self, $c) = @_;
-    ...
+    $c->logout;
+    $c->res->redirect($c->uri_for_action('/signin'));
 }
 
 sub forgot_password :Path('forgot-password') :Args(0) {

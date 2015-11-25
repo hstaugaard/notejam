@@ -28,7 +28,7 @@ sub create :Local :Args(0) {
     if ($self->pad_form->process(item => $pad, params => $c->req->params)) {
         return $c->res->redirect($c->uri_for_action(
             '/notes/notes',
-            {mid => $c->set_status_msg('Pad is successfully created')}
+            {mid => $c->set_status_msg('Pad is successfully created')},
         ));
 
     }
