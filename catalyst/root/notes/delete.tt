@@ -1,0 +1,9 @@
+[% page_title = note.name %]
+[% PROCESS _pads.tt %]
+<div class="thirteen columns content-area">
+    <p>Are you sure you want to delete [% note.name %]?</p>
+    <form method="post">
+        <input type="submit" class="red" value="Yes, delete I want to delete it">&nbsp;
+        <a href="[% c.uri_for_action('/notes/view', [note.id]) %]">Cancel</a>
+    </form>
+</div>

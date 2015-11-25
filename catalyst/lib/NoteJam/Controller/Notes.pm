@@ -28,14 +28,11 @@ sub notes :Path('/') :Args(0) {
 
 sub create :Local :Args(0) {
     my ($self, $c) = @_;
-    my $form = NoteJam::Form::Note->new(item => $c->user->new_related('notes', {}));
-    if ($form->process(params => $c->req->params)) {
-        return $c->res->redirect($c->uri_for_action(
-            '/notes/notes',
-            {mid => $c->set_status_msg('Note is successfully created')},
-        ));
-    }
-    $c->stash(f => $form);
+    $c->stash(
+        note    => $c->user->new_related('notes', {}),
+        message => 'Note is successfully created',
+    );
+    $c->detach('form');
 }
 
 sub note :PathPrefix :Chained :CaptureArgs(1) {
@@ -47,12 +44,31 @@ sub view :PathPart('') :Chained('note') :Args(0) {}
 
 sub edit :Chained('note') :Args(0) {
     my ($self, $c) = @_;
-    ...
+    $c->stash(
+        template => 'notes/create.tt',
+        message  => 'Note is successfully updated',
+    );
+    $c->detach('form');
 }
 
 sub delete :Chained('note') :Args(0) { ## no critic (ProhibitBuiltinHomonyms)
     my ($self, $c) = @_;
-    ...
+    if ($c->req->method eq 'POST') {
+        $c->stash->{note}->delete;
+        return $c->res->redirect($c->uri_for_action('/notes/notes'));
+    }
+}
+
+sub form :Private {
+    my ($self, $c) = @_;
+    my $form = NoteJam::Form::Note->new(item => $c->stash->{note});
+    if ($form->process(params => $c->req->params)) {
+        return $c->res->redirect($c->uri_for_action(
+            '/notes/notes',
+            {mid => $c->set_status_msg($c->stash->{message})},
+        ));
+    }
+    $c->stash(f => $form);
 }
 
 __PACKAGE__->meta->make_immutable;
