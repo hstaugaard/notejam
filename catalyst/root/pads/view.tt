@@ -1,0 +1,27 @@
+[% page_title = pad.name _ ' (' _ notes.size _ ')' %]
+[% PROCESS _pads.tt %]
+<div class="thirteen columns content-area">
+    [% IF status_msg %]
+        <div class="alert-area">
+           <div class="alert alert-success">[% status_msg %]</div>
+        </div>
+    [% END %]
+    [% IF notes.size %]
+        <table class="notes">
+            <tr>
+                <th class="note">Note <a href="[% c.uri_for_action('/pads/view', [pad.id], {order => 'name'}) %]" class="sort_arrow" >&uarr;</a><a href="[% c.uri_for_action('/pads/view', [pad.id], {order => '-name'}) %]" class="sort_arrow" >&darr;</a></th>
+                <th class="date">Last modified <a href="[% c.uri_for_action('/pads/view', [pad.id], {order => 'updated_at'}) %]" class="sort_arrow" >&uarr;</a><a href="[% c.uri_for_action('/pads/view', [pad.id], {order => '-updated_at'}) %]" class="sort_arrow" >&darr;</a></th>
+            </tr>
+            [% FOR note IN notes %]
+                <tr>
+                    <td><a href="[% c.uri_for_action('/notes/view', [note.id]) %]">[% note.name %]</a></td>
+                    <td class="hidden-text date">[% smart_date(note.updated_at) %]</td>
+                </tr>
+            [% END %]
+        </table>
+    [% ELSE %]
+        <p class="empty">Create your first note in the pad.</p>
+    [% END %]
+    <a href="[% c.uri_for_action('/notes/create', {pad => pad.id}) %]" class="button">New note</a>&nbsp;
+    <a href="[% c.uri_for_action('/pads/edit', [pad.id]) %]">Pad settings</a>
+</div>

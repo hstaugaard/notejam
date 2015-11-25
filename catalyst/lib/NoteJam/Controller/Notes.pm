@@ -62,6 +62,10 @@ sub delete :Chained('note') :Args(0) { ## no critic (ProhibitBuiltinHomonyms)
 sub form :Private {
     my ($self, $c) = @_;
     my $form = NoteJam::Form::Note->new(item => $c->stash->{note});
+    if ($c->req->method ne 'POST') {
+        $form->field('name')->tags->{no_errors} = 1;
+        $form->field('text')->tags->{no_errors} = 1;
+    }
     if ($form->process(params => $c->req->params)) {
         return $c->res->redirect($c->uri_for_action(
             '/notes/notes',

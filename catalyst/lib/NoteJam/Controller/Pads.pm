@@ -23,7 +23,6 @@ sub create :Local :Args(0) {
             '/notes/notes',
             {mid => $c->set_status_msg('Pad is successfully created')},
         ));
-
     }
     $c->stash(f => $form);
 }
@@ -33,7 +32,16 @@ sub pad :PathPrefix :Chained :CaptureArgs(1) {
     $c->stash(pad => $c->user->find_related('pads', $pad_id));
 }
 
-sub view :PathPart('') :Chained('pad') :Args(0) {}
+sub view :PathPart('') :Chained('pad') :Args(0) {
+    my ($self, $c) = @_;
+    $c->load_status_msgs;
+    my $order;
+    my $parm = $c->req->param('order');
+    if (defined $parm && $parm =~ /\A(-?)(name|updated_at)\z/) {
+        $order->{$1 eq '-' ? '-desc' : '-asc'} = $2;
+    }
+    $c->stash(notes => [$c->stash->{pad}->notes->search(undef, {order_by => $order})]);
+}
 
 sub edit :Chained('pad') :Args(0) {
     my ($self, $c) = @_;
