@@ -16,19 +16,12 @@ sub signup :Local :Args(0) {
 
 sub signin :Local :Args(0) {
     my ($self, $c) = @_;
-    my $form = NoteJam::Form::Signin->new;
+    my $form = NoteJam::Form::Signin->new(authenticator => $c);
     if ($form->process(params => $c->req->params)) {
-        $c->authenticate({
-            email    => $form->field('email')->value,
-            password => $form->field('password')->value,
-        });
-        if ($c->user_exists) {
-            return $c->res->redirect($c->uri_for_action(
-                '/notes/all',
-                {mid => $c->set_status_msg('You are signed in!')},
-            ));
-        }
-        $form->add_form_error('Wrong email or password');
+        return $c->res->redirect($c->uri_for_action(
+            '/notes/all',
+            {mid => $c->set_status_msg('You are signed in!')},
+        ));
     }
     $c->stash(f => $form);
 }
