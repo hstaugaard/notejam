@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="sixteen columns">
-                <h1 class="bold-header"><a href="[% c.uri_for_action('/notes/notes') %]" class="header">note<span class="jam">jam:</span></a> <span> [% page_title %]</span></h1>
+                <h1 class="bold-header"><a href="[% c.uri_for_action('/notes/all') %]" class="header">note<span class="jam">jam:</span></a> <span> [% page_title %]</span></h1>
             </div>
             [% content %]
             <hr class="footer" />

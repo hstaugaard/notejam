@@ -15,7 +15,7 @@ sub auto :Private {
     return 1;
 }
 
-sub notes :Path('/') :Args(0) {
+sub all :Path('/') :Args(0) {
     my ($self, $c) = @_;
     $c->load_status_msgs;
     my $order;
@@ -55,7 +55,7 @@ sub delete :Chained('note') :Args(0) { ## no critic (ProhibitBuiltinHomonyms)
     my ($self, $c) = @_;
     if ($c->req->method eq 'POST') {
         $c->stash->{note}->delete;
-        return $c->res->redirect($c->uri_for_action('/notes/notes'));
+        return $c->res->redirect($c->uri_for_action('/notes/all'));
     }
 }
 
@@ -68,7 +68,7 @@ sub form :Private {
     }
     if ($form->process(params => $c->req->params)) {
         return $c->res->redirect($c->uri_for_action(
-            '/notes/notes',
+            '/notes/all',
             {mid => $c->set_status_msg($c->stash->{message})},
         ));
     }

@@ -23,7 +23,7 @@ sub signin :Local :Args(0) {
         });
         if ($c->user_exists) {
             return $c->res->redirect($c->uri_for_action(
-                '/notes/notes',
+                '/notes/all',
                 {mid => $c->set_status_msg('You are signed in!')},
             ));
         }
