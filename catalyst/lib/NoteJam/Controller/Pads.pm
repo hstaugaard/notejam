@@ -33,10 +33,7 @@ sub pad :PathPrefix :Chained :CaptureArgs(1) {
     $c->stash(pad => $c->user->find_related('pads', $pad_id));
 }
 
-sub view :PathPart('') :Chained('pad') :Args(0) {
-    my ($self, $c) = @_;
-    ...
-}
+sub view :PathPart('') :Chained('pad') :Args(0) {}
 
 sub edit :Chained('pad') :Args(0) {
     my ($self, $c) = @_;

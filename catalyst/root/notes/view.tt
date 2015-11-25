@@ -1,0 +1,8 @@
+[% page_title = note.name %]
+[% PROCESS _pads.tt %]
+<div class="thirteen columns content-area">
+    <p class="hidden-text">[% smart_date(note.updated_at) %]</p>
+    <div class="note">[% note.text %]</div>
+    <a href="[% c.uri_for_action('/notes/edit', [note.id]) %]" class="button">Edit</a>
+    <a href="[% c.uri_for_action('/notes/delete', [note.id]) %]" class="delete-note">Delete it</a>
+</div>

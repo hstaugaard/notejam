@@ -39,14 +39,11 @@ sub create :Local :Args(0) {
 }
 
 sub note :PathPrefix :Chained :CaptureArgs(1) {
-    my ($self, $c) = @_;
-    ...
+    my ($self, $c, $note_id) = @_;
+    $c->stash(note => $c->user->find_related('notes', $note_id));
 }
 
-sub view :PathPart('') :Chained('note') :Args(0) {
-    my ($self, $c) = @_;
-    ...
-}
+sub view :PathPart('') :Chained('note') :Args(0) {}
 
 sub edit :Chained('note') :Args(0) {
     my ($self, $c) = @_;
