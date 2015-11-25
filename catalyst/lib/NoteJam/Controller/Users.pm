@@ -3,6 +3,7 @@ package NoteJam::Controller::Users;
 use Moose;
 use namespace::autoclean;
 use NoteJam::Form::Signin;
+use NoteJam::Form::Settings;
 
 BEGIN {extends 'Catalyst::Controller'}
 
@@ -45,7 +46,15 @@ sub forgot_password :Path('forgot-password') :Args(0) {
 
 sub settings :Local :Args(0) {
     my ($self, $c) = @_;
-    ...
+    my $form = NoteJam::Form::Settings->new(user => $c->user);
+    if ($form->process(params => $c->req->params)) {
+        $c->user->update({password => $form->field('new_password')->value});
+        return $c->res->redirect($c->uri_for_action(
+            '/notes/all',
+            {mid => $c->set_status_msg('Password is successfully changed')},
+        ));
+    }
+    $c->stash(f => $form);
 }
 
 sub end : ActionClass('RenderView') {}

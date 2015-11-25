@@ -1,0 +1,9 @@
+[% page_title = 'Account Settings' %]
+<div class="sixteen columns content-area">
+    <form class="offset-by-six sign-in" method="post" action="[% c.uri_for(c.action) %]">
+        [% f.field('old_password').render %]
+        [% f.field('new_password').render %]
+        [% f.field('confirm_new_password').render %]
+        <input type="submit" value="Save">
+    </form>
+</div>
