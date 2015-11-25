@@ -1,7 +1,7 @@
 [% page_title = 'Sign In' %]
 <div class="sixteen columns content-area">
     [% PROCESS _form_errors.tt %]
-    <form class="offset-by-six sign-in" method="post">
+    <form class="offset-by-six sign-in" method="post" action="[% c.uri_for(c.action) %]">
         [% f.field('email').render %]
         [% f.field('password').render %]
         <input type="submit" value="Sign In"> or <a href="[% c.uri_for_action('/signup') %]">Sign up</a>

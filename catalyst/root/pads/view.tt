@@ -9,8 +9,8 @@
     [% IF notes.size %]
         <table class="notes">
             <tr>
-                <th class="note">Note <a href="[% c.uri_for_action('/pads/view', [pad.id], {order => 'name'}) %]" class="sort_arrow" >&uarr;</a><a href="[% c.uri_for_action('/pads/view', [pad.id], {order => '-name'}) %]" class="sort_arrow" >&darr;</a></th>
-                <th class="date">Last modified <a href="[% c.uri_for_action('/pads/view', [pad.id], {order => 'updated_at'}) %]" class="sort_arrow" >&uarr;</a><a href="[% c.uri_for_action('/pads/view', [pad.id], {order => '-updated_at'}) %]" class="sort_arrow" >&darr;</a></th>
+                <th class="note">Note <a href="[% c.uri_for(c.action, [pad.id], {order => 'name'}) %]" class="sort_arrow" >&uarr;</a><a href="[% c.uri_for(c.action, [pad.id], {order => '-name'}) %]" class="sort_arrow" >&darr;</a></th>
+                <th class="date">Last modified <a href="[% c.uri_for(c.action, [pad.id], {order => 'updated_at'}) %]" class="sort_arrow" >&uarr;</a><a href="[% c.uri_for(c.action, [pad.id], {order => '-updated_at'}) %]" class="sort_arrow" >&darr;</a></th>
             </tr>
             [% FOR note IN notes %]
                 <tr>

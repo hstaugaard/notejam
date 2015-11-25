@@ -1,7 +1,7 @@
 [% page_title = 'New pad' %]
 [% PROCESS _pads.tt %]
 <div class="thirteen columns content-area">
-    <form class="pad" method="post">
+    <form class="pad" method="post" action="[% c.uri_for(c.action) %]">
         [% f.field('name').render %]
         <input type="submit" value="Save">
     </form>
