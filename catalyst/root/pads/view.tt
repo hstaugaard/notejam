@@ -1,5 +1,5 @@
 [% page_title = pad.name _ ' (' _ notes.size _ ')' %]
-[% PROCESS _pads.tt %]
+[% INCLUDE _pads.tt %]
 <div class="thirteen columns content-area">
     [% IF status_msg %]
         <div class="alert-area">

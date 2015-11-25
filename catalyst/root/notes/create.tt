@@ -1,5 +1,5 @@
 [% page_title = 'New note' %]
-[% PROCESS _pads.tt %]
+[% INCLUDE _pads.tt %]
 <div class="thirteen columns content-area">
     <form class="note" method="post" action="[% c.uri_for(c.action) %]">
         [% f.field('name').render %]

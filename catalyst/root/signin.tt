@@ -1,6 +1,6 @@
 [% page_title = 'Sign In' %]
 <div class="sixteen columns content-area">
-    [% PROCESS _form_errors.tt %]
+    [% INCLUDE _form_errors.tt %]
     <form class="offset-by-six sign-in" method="post" action="[% c.uri_for(c.action) %]">
         [% f.field('email').render %]
         [% f.field('password').render %]

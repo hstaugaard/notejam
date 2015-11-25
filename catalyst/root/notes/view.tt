@@ -1,5 +1,5 @@
 [% page_title = note.name %]
-[% PROCESS _pads.tt %]
+[% INCLUDE _pads.tt %]
 <div class="thirteen columns content-area">
     <p class="hidden-text">[% smart_date(note.updated_at) %]</p>
     <div class="note">[% note.text %]</div>

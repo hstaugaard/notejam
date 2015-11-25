@@ -1,5 +1,5 @@
 [% page_title = note.name %]
-[% PROCESS _pads.tt %]
+[% INCLUDE _pads.tt %]
 <div class="thirteen columns content-area">
     <p>Are you sure you want to delete [% note.name %]?</p>
     <form method="post" action="[% c.uri_for(c.action) %]">
