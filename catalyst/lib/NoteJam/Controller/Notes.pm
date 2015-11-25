@@ -28,9 +28,8 @@ sub notes :Path('/') :Args(0) {
 
 sub create :Local :Args(0) {
     my ($self, $c) = @_;
-    my $form = NoteJam::Form::Note->new(ctx => $c);
-    my $note = $c->user->new_related('notes', {});
-    if ($form->process(item => $note, params => $c->req->params)) {
+    my $form = NoteJam::Form::Note->new(item => $c->user->new_related('notes', {}));
+    if ($form->process(params => $c->req->params)) {
         return $c->res->redirect($c->uri_for_action(
             '/notes/notes',
             {mid => $c->set_status_msg('Note is successfully created')},

@@ -20,7 +20,7 @@ has_field pad => (
 
 sub options_pad {
     my $self = shift;
-    return map {$_->id => $_->name} $self->ctx->user->pads;
+    return map {$_->id => $_->name} $self->item->user->pads;
 };
 
 1;

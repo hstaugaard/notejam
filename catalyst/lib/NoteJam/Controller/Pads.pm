@@ -17,9 +17,8 @@ sub auto :Private {
 
 sub create :Local :Args(0) {
     my ($self, $c) = @_;
-    my $pad = $c->user->new_related('pads', {});
-    my $form = NoteJam::Form::Pad->new;
-    if ($form->process(item => $pad, params => $c->req->params)) {
+    my $form = NoteJam::Form::Pad->new(item => $c->user->new_related('pads', {}));
+    if ($form->process(params => $c->req->params)) {
         return $c->res->redirect($c->uri_for_action(
             '/notes/notes',
             {mid => $c->set_status_msg('Pad is successfully created')},
