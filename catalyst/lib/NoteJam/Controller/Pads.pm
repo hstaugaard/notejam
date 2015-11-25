@@ -17,15 +17,11 @@ sub auto :Private {
 
 sub create :Local :Args(0) {
     my ($self, $c) = @_;
-    my $form = NoteJam::Form::Pad->new(item => $c->user->new_related('pads', {}));
-    if ($form->process(params => $c->req->params)) {
-        return $c->res->redirect($c->uri_for_action(
-            '/pads/view',
-            [$form->item->id],
-            {mid => $c->set_status_msg('Pad is successfully created')},
-        ));
-    }
-    $c->stash(f => $form);
+    $c->stash(
+        pad     => $c->user->new_related('pads', {}),
+        message => 'Pad is successfully created',
+    );
+    $c->detach('form');
 }
 
 sub pad :PathPrefix :Chained :CaptureArgs(1) {
@@ -46,12 +42,29 @@ sub view :PathPart('') :Chained('pad') :Args(0) {
 
 sub edit :Chained('pad') :Args(0) {
     my ($self, $c) = @_;
-    ...
+    $c->stash(
+        template => 'pads/create.tt',
+        message  => 'Pad is successfully updated',
+    );
+    $c->detach('form');
 }
 
 sub delete :Chained('pad') :Args(0) { ## no critic (ProhibitBuiltinHomonyms)
     my ($self, $c) = @_;
     ...
+}
+
+sub form :Private {
+    my ($self, $c) = @_;
+    my $form = NoteJam::Form::Pad->new(item => $c->stash->{pad});
+    if ($form->process(params => $c->req->params)) {
+        return $c->res->redirect($c->uri_for_action(
+            '/pads/view',
+            [$form->item->id],
+            {mid => $c->set_status_msg($c->stash->{message})},
+        ));
+    }
+    $c->stash(f => $form);
 }
 
 __PACKAGE__->meta->make_immutable;
