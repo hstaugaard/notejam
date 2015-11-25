@@ -1,0 +1,6 @@
+=pod
+=head1 Notejam: Catalyst
+
+Notejam application implemented using L<Catalyst|http://www.catalystframework.org/>
+
+=cut
