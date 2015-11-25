@@ -32,18 +32,12 @@ sub create :Local :Args(0) {
         ));
 
     }
-    $c->stash(
-        f    => $self->pad_form,
-        pads => [$c->user->pads],
-    );
+    $c->stash(f => $self->pad_form);
 }
 
 sub pad :PathPrefix :Chained :CaptureArgs(1) {
     my ($self, $c, $pad_id) = @_;
-    $c->stash(
-        pad  => $c->user->find_related('pads', $pad_id),
-        pads => [$c->user->pads],
-    );
+    $c->stash(pad => $c->user->find_related('pads', $pad_id));
 }
 
 sub view :PathPart('') :Chained('pad') :Args(0) {

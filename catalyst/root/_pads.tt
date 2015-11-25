@@ -1,9 +1,9 @@
 <div class="three columns">
     <h4 id="logo">My pads</h4>
     <nav>
-        [% IF pads.size %]
+        [% IF c.user.pads.size %]
             <ul>
-                [% FOR pad IN pads %]
+                [% FOR pad IN c.user.pads %]
                     <li><a href="[% c.uri_for_action('/pads/view', [pad.id]) %]">[% pad.name %]</a></li>
                 [% END %]
             </ul>

@@ -17,15 +17,12 @@ sub auto :Private {
 
 sub notes :Path('/') :Args(0) {
     my ($self, $c) = @_;
+    $c->load_status_msgs;
     my $order;
     if ($c->req->param('order') =~ /\A(-?)(name|updated_at)\z/) {
         $order->{$1 eq '-' ? '-desc' : '-asc'} = $2;
     }
-    $c->load_status_msgs;
-    $c->stash(
-        pads  => [$c->user->pads],
-        notes => [$c->user->notes->search(undef, {order_by => $order})],
-    );
+    $c->stash(notes => [$c->user->notes->search(undef, {order_by => $order})]);
 }
 
 sub create :Local :Args(0) {
