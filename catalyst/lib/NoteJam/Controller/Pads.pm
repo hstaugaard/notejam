@@ -18,8 +18,9 @@ sub auto :Private {
 sub create :Local :Args(0) {
     my ($self, $c) = @_;
     $c->stash(
-        pad     => $c->user->new_related('pads', {}),
-        message => 'Pad is successfully created',
+        pad      => $c->user->new_related('pads', {}),
+        message  => 'Pad is successfully created',
+        template => 'pads/edit.tt',
     );
     $c->detach('form');
 }
@@ -43,7 +44,6 @@ sub view :PathPart('') :Chained('pad') :Args(0) {
 sub edit :Chained('pad') :Args(0) {
     my ($self, $c) = @_;
     $c->stash(
-        template => 'pads/create.tt',
         message  => 'Pad is successfully updated',
     );
     $c->detach('form');

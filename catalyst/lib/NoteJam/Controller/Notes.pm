@@ -29,8 +29,9 @@ sub all :Path('/') :Args(0) {
 sub create :Local :Args(0) {
     my ($self, $c) = @_;
     $c->stash(
-        note    => $c->user->new_related('notes', {}),
-        message => 'Note is successfully created',
+        note     => $c->user->new_related('notes', {}),
+        message  => 'Note is successfully created',
+        template => 'notes/edit.tt',
     );
     $c->detach('form');
 }
@@ -45,7 +46,6 @@ sub view :PathPart('') :Chained('note') :Args(0) {}
 sub edit :Chained('note') :Args(0) {
     my ($self, $c) = @_;
     $c->stash(
-        template => 'notes/create.tt',
         message  => 'Note is successfully updated',
     );
     $c->detach('form');
