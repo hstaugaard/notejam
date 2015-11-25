@@ -5,4 +5,7 @@
         [% f.field('name').render %]
         <input type="submit" value="Save">
     </form>
+    [% IF f.item.in_storage %]
+        <a class="red" href="[% c.uri_for_action('/pads/delete', [f.item.id]) %]">Delete pad</a>
+    [% END %]
 </div>

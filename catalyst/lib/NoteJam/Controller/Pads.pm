@@ -51,7 +51,10 @@ sub edit :Chained('pad') :Args(0) {
 
 sub delete :Chained('pad') :Args(0) { ## no critic (ProhibitBuiltinHomonyms)
     my ($self, $c) = @_;
-    ...
+    if ($c->req->method eq 'POST') {
+        $c->stash->{pad}->delete;
+        return $c->res->redirect($c->uri_for_action('/notes/all'));
+    }
 }
 
 sub form :Private {
