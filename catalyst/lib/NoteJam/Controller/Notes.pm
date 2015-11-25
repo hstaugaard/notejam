@@ -54,8 +54,13 @@ sub edit :Chained('note') :Args(0) {
 sub delete :Chained('note') :Args(0) { ## no critic (ProhibitBuiltinHomonyms)
     my ($self, $c) = @_;
     if ($c->req->method eq 'POST') {
-        $c->stash->{note}->delete;
-        return $c->res->redirect($c->uri_for_action('/notes/all'));
+        my $note = $c->stash->{note};
+        $note->delete;
+        if (my $pad_id = $note->pad_id) {
+            return $c->res->redirect($c->uri_for_action('/pads/view', [$pad_id]));
+        } else {
+            return $c->res->redirect($c->uri_for_action('/notes/all'));
+        }
     }
 }
 
@@ -67,10 +72,12 @@ sub form :Private {
         $form->field('text')->tags->{no_errors} = 1;
     }
     if ($form->process(params => $c->req->params)) {
-        return $c->res->redirect($c->uri_for_action(
-            '/notes/all',
-            {mid => $c->set_status_msg($c->stash->{message})},
-        ));
+        my $mid = {mid => $c->set_status_msg($c->stash->{message})};
+        if (my $pad_id = $form->item->pad_id) {
+            return $c->res->redirect($c->uri_for_action('/pads/view', [$pad_id], $mid));
+        } else {
+            return $c->res->redirect($c->uri_for_action('/notes/all', $mid));
+        }
     }
     $c->stash(f => $form);
 }
