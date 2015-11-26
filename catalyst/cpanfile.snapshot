@@ -4907,6 +4907,25 @@ DISTRIBUTIONS
       URI::file 0
       WWW::Mechanize 1.68
       perl 5.008
+  Test-WWW-Mechanize-Catalyst-0.60
+    pathname: J/JJ/JJNAPIORK/Test-WWW-Mechanize-Catalyst-0.60.tar.gz
+    provides:
+      Test::WWW::Mechanize::Catalyst 0.60
+    requirements:
+      Catalyst 5.90
+      Catalyst::Plugin::Session::State::Cookie 0
+      Catalyst::Plugin::Session::Store::Dummy 0
+      Class::Load 0.19
+      ExtUtils::MakeMaker 6.59
+      LWP 5.816
+      Moose 0.67
+      Test::Exception 0
+      Test::More 0.88
+      Test::WWW::Mechanize 1.14
+      Test::utf8 0
+      WWW::Mechanize 1.54
+      namespace::clean 0.09
+      perl 5.008004
   Test-WWW-Mechanize-PSGI-0.35
     pathname: L/LB/LBROCARD/Test-WWW-Mechanize-PSGI-0.35.tar.gz
     provides:
@@ -4931,6 +4950,15 @@ DISTRIBUTIONS
       Test::Builder::Tester 1.02
       Test::More 0
       perl 5.006
+  Test-utf8-1.01
+    pathname: M/MA/MARKF/Test-utf8-1.01.tar.gz
+    provides:
+      Test::utf8 1.01
+    requirements:
+      ExtUtils::MakeMaker 6.59
+      Test::Builder 0
+      Test::Builder::Tester 0.09
+      perl 5.007003
   Text-Diff-1.43
     pathname: N/NE/NEILB/Text-Diff-1.43.tar.gz
     provides:

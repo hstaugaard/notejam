@@ -13,6 +13,7 @@ requires 'Catalyst::Plugin::StatusMessage';
 requires 'Catalyst::Runtime' => '5.90080';
 requires 'Catalyst::View::Email';
 requires 'Catalyst::View::TT';
+requires 'DBD::SQLite';
 requires 'DBIx::Class';
 requires 'DBIx::Class::EncodedColumn';
 requires 'DBIx::Class::TimeStamp';
@@ -21,3 +22,6 @@ requires 'HTML::FormHandler::Model::DBIC';
 requires 'Moose';
 requires 'namespace::autoclean';
 requires 'YAML';
+
+test_requires 'Test::More';
+test_requires 'Test::WWW::Mechanize::Catalyst';
