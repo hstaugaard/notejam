@@ -9,4 +9,9 @@ sub email_exists {
     return !!$self->find($email, {key => 'email_unique'});
 }
 
+sub update_password {
+    my ($self, $email, $password) = @_;
+    return $self->find($email, {key => 'email_unique'})->update({password => $password});
+}
+
 1;

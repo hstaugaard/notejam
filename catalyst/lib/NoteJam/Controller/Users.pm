@@ -5,6 +5,8 @@ use namespace::autoclean;
 use NoteJam::Form::Signin;
 use NoteJam::Form::Settings;
 use NoteJam::Form::Signup;
+use NoteJam::Form::ForgotPassword;
+use App::Genpass;
 
 BEGIN {extends 'Catalyst::Controller'}
 
@@ -47,7 +49,24 @@ sub signout :Local :Args(0) {
 
 sub forgot_password :Path('forgot-password') :Args(0) {
     my ($self, $c) = @_;
-    ...
+    my $form = NoteJam::Form::ForgotPassword->new(user_model => $c->model('NoteJam::User'));
+    if ($form->process(params => $c->req->params)) {
+        my $email = $form->field('email')->value;
+        my $password = App::Genpass->new(readable => 1, length => 8)->generate(1);
+        $c->model('NoteJam::User')->update_password($email, $password);
+        $c->stash(email => {
+            to      => $email,
+            from    => 'from@notejam.com',
+            subject => 'Notejam password reset',
+            body    => "Hi, $email. Your new password is $password.",
+        });
+        $c->forward($c->view('Email'));
+        return $c->res->redirect($c->uri_for_action(
+            '/signin',
+            {mid => $c->set_status_msg('New password is sent in your email inbox.')},
+        ));
+    }
+    $c->stash(f => $form);
 }
 
 sub settings :Local :Args(0) {
