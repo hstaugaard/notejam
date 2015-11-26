@@ -10,13 +10,21 @@ use App::Genpass;
 
 BEGIN {extends 'Catalyst::Controller'}
 
+has password_generator => (
+    is       => 'ro',
+    init_arg => undef,
+    lazy     => 1,
+    default  => sub {App::Genpass->new(readable => 1, length => 8)},
+    handles  => {random_password => [generate => 1]},
+);
+
 __PACKAGE__->config(namespace => '');
 
 sub signup :Local :Args(0) {
     my ($self, $c) = @_;
-    my $form = NoteJam::Form::Signup->new(user_model => $c->model('NoteJam::User'));
+    my $form = NoteJam::Form::Signup->new(user_model => $c->model);
     if ($form->process(params => $c->req->params)) {
-        $c->model('NoteJam::User')->create({
+        $c->model->create({
             email    => $form->field('email')->value,
             password => $form->field('password')->value,
         });
@@ -49,11 +57,11 @@ sub signout :Local :Args(0) {
 
 sub forgot_password :Path('forgot-password') :Args(0) {
     my ($self, $c) = @_;
-    my $form = NoteJam::Form::ForgotPassword->new(user_model => $c->model('NoteJam::User'));
+    my $form = NoteJam::Form::ForgotPassword->new(user_model => $c->model);
     if ($form->process(params => $c->req->params)) {
-        my $email = $form->field('email')->value;
-        my $password = App::Genpass->new(readable => 1, length => 8)->generate(1);
-        $c->model('NoteJam::User')->update_password($email, $password);
+        my $email    = $form->field('email')->value;
+        my $password = $self->random_password;
+        $c->model->update_password($email, $password);
         $c->stash(email => {
             to      => $email,
             from    => 'from@notejam.com',

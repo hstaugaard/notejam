@@ -18,6 +18,4 @@ sub smart_date {
     return DateTime::Format::SmartDate->format_datetime($datetime);
 }
 
-__PACKAGE__->meta->make_immutable;
-
 1;
