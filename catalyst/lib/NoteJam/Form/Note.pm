@@ -23,4 +23,10 @@ sub options_pad {
     return map {$_->id => $_->name} $self->item->user->pads;
 };
 
+sub hide_field_errors {
+    my ($self, $hide) = @_;
+    $self->field('name')->tags->{no_errors} = $hide;
+    $self->field('text')->tags->{no_errors} = $hide;
+}
+
 1;

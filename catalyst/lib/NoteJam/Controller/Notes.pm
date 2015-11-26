@@ -67,10 +67,7 @@ sub delete :Chained('note') :Args(0) { ## no critic (ProhibitBuiltinHomonyms)
 sub form :Private {
     my ($self, $c) = @_;
     my $form = NoteJam::Form::Note->new(item => $c->stash->{note});
-    if ($c->req->method ne 'POST') { # Don't show errors when coming from /pad/view
-        $form->field('name')->tags->{no_errors} = 1;
-        $form->field('text')->tags->{no_errors} = 1;
-    }
+    $form->hide_field_errors(1) if $c->req->method ne 'POST'; # Don't show errors when coming from /pad/view
     if ($form->process(params => $c->req->params)) {
         my $mid = {mid => $c->set_status_msg($c->stash->{message})};
         if (my $pad_id = $form->item->pad_id) {
