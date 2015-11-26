@@ -1,0 +1,5 @@
+[% IF status_msg %]
+    <div class="alert-area">
+       <div class="alert alert-success">[% status_msg %]</div>
+    </div>
+[% END %]

@@ -1,11 +1,7 @@
 [% page_title = 'All notes (' _ notes.size _ ')' %]
 [% INCLUDE _pads.tt %]
 <div class="thirteen columns content-area">
-    [% IF status_msg %]
-        <div class="alert-area">
-           <div class="alert alert-success">[% status_msg %]</div>
-        </div>
-    [% END %]
+    [% INCLUDE _status_message.tt %]
     [% IF notes.size %]
         <table class="notes">
             <tr>

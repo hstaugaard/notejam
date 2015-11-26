@@ -1,6 +1,13 @@
 [% page_title = 'Sign In' %]
 <div class="sixteen columns content-area">
-    [% INCLUDE _form_errors.tt %]
+    [% INCLUDE _status_message.tt %]
+    [% IF f.has_form_errors %]
+        <div class="alert-area">
+            [% FOR error IN f.form_errors %]
+                <div class="alert alert-error">[% error %]</div>
+            [% END %]
+        </div>
+    [% END %]
     <form class="offset-by-six sign-in" method="post" action="[% c.uri_for(c.action) %]">
         [% f.field('email').render %]
         [% f.field('password').render %]
