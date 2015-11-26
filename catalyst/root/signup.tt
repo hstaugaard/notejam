@@ -1,0 +1,9 @@
+[% page_title = 'Sign up' %]
+<div class="sixteen columns content-area">
+    <form class="offset-by-six sign-in" method="post" action="[% c.uri_for(c.action) %]">
+        [% f.field('email').render %]
+        [% f.field('password').render %]
+        [% f.field('confirm_password').render %]
+        <input type="submit" value="Save"> or <a href="[% c.uri_form_action('/signin') %]">Sign in</a>
+    </form>
+</div>
