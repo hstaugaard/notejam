@@ -6,7 +6,7 @@
     <head>
         <!-- Basic Page Needs -->
         <meta charset="utf-8">
-        <title>Notejam: [% page_title %]</title>
+        <title>[% page_title %]</title>
         <meta name="description" content="">
         <meta name="author" content="">
         <!-- Mobile Specific Metas -->
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="sixteen columns">
-                <h1 class="bold-header"><a href="[% c.uri_for_action('/notes/all') %]" class="header">note<span class="jam">jam:</span></a> <span> [% page_title %]</span></h1>
+                <h1 class="bold-header"><a href="[% c.uri_for_action('/notes/all') %]" class="header">note<span class="jam">jam:</span></a> <span>[% page_title %]</span></h1>
             </div>
             [% content %]
             <hr class="footer" />

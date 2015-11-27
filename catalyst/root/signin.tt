@@ -1,4 +1,4 @@
-[% page_title = 'Sign In' %]
+[% page_title = 'Sign in' %]
 <div class="sixteen columns content-area">
     [% INCLUDE _status_message.tt %]
     [% IF f.has_form_errors %]
