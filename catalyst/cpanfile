@@ -13,6 +13,7 @@ requires 'Catalyst::Plugin::StatusMessage';
 requires 'Catalyst::Runtime' => '5.90080';
 requires 'Catalyst::View::Email';
 requires 'Catalyst::View::TT';
+requires 'Cpanel::JSON::XS';
 requires 'DBD::SQLite';
 requires 'DBIx::Class';
 requires 'DBIx::Class::EncodedColumn';
@@ -21,6 +22,7 @@ requires 'HTML::FormHandler';
 requires 'HTML::FormHandler::Model::DBIC';
 requires 'Moose';
 requires 'namespace::autoclean';
+requires 'URI::SmartURI';
 requires 'YAML';
 
 test_requires 'Test::More';
