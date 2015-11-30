@@ -937,10 +937,10 @@ DISTRIBUTIONS
       Module::Build 0.38
       URI::Escape 0
       perl 5.008001
-  Cpanel-JSON-XS-3.0205
-    pathname: R/RU/RURBAN/Cpanel-JSON-XS-3.0205.tar.gz
+  Cpanel-JSON-XS-3.0206
+    pathname: R/RU/RURBAN/Cpanel-JSON-XS-3.0206.tar.gz
     provides:
-      Cpanel::JSON::XS 3.0205
+      Cpanel::JSON::XS 3.0206
     requirements:
       ExtUtils::MakeMaker 0
       Pod::Text 2.08
@@ -2250,10 +2250,10 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.30
       strict 0
       warnings 0
-  ExtUtils-Depends-0.404
-    pathname: X/XA/XAOC/ExtUtils-Depends-0.404.tar.gz
+  ExtUtils-Depends-0.405
+    pathname: X/XA/XAOC/ExtUtils-Depends-0.405.tar.gz
     provides:
-      ExtUtils::Depends 0.404
+      ExtUtils::Depends 0.405
     requirements:
       Data::Dumper 0
       ExtUtils::MakeMaker 0
