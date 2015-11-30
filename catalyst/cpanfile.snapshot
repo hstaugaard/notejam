@@ -807,6 +807,76 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       Test::More 0
+  Code-TidyAll-0.32
+    pathname: D/DR/DROLSKY/Code-TidyAll-0.32.tar.gz
+    provides:
+      Code::TidyAll 0.32
+      Code::TidyAll::Cache 0.32
+      Code::TidyAll::CacheModel 0.32
+      Code::TidyAll::CacheModel::Shared 0.32
+      Code::TidyAll::Config::INI::Reader 0.32
+      Code::TidyAll::Git::Precommit 0.32
+      Code::TidyAll::Git::Prereceive 0.32
+      Code::TidyAll::Git::Util 0.32
+      Code::TidyAll::Plugin 0.32
+      Code::TidyAll::Plugin::CSSUnminifier 0.32
+      Code::TidyAll::Plugin::DiffOnTidyError 0.32
+      Code::TidyAll::Plugin::JSBeautify 0.32
+      Code::TidyAll::Plugin::JSHint 0.32
+      Code::TidyAll::Plugin::JSLint 0.32
+      Code::TidyAll::Plugin::JSON 0.32
+      Code::TidyAll::Plugin::MasonTidy 0.32
+      Code::TidyAll::Plugin::PHPCodeSniffer 0.32
+      Code::TidyAll::Plugin::PerlCritic 0.32
+      Code::TidyAll::Plugin::PerlTidy 0.32
+      Code::TidyAll::Plugin::PerlTidySweet 0.32
+      Code::TidyAll::Plugin::PodChecker 0.32
+      Code::TidyAll::Plugin::PodSpell 0.32
+      Code::TidyAll::Plugin::PodTidy 0.32
+      Code::TidyAll::Plugin::SortLines 0.32
+      Code::TidyAll::Result 0.32
+      Code::TidyAll::Role::Tempdir 0.32
+      Code::TidyAll::SVN::Precommit 0.32
+      Code::TidyAll::SVN::Util 0.32
+      Code::TidyAll::Util::Zglob 0.32
+      Test::Code::TidyAll 0.32
+    requirements:
+      Capture::Tiny 0
+      Config::INI::Reader 0
+      Cwd 0
+      Data::Dumper 0
+      Date::Format 0
+      Digest::SHA 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      File::Basename 0
+      File::Find 0
+      File::Path 0
+      File::Slurp::Tiny 0
+      File::Spec::Functions 0
+      File::Temp 0
+      File::Which 0
+      File::Zglob 0
+      Getopt::Long 0
+      Guard 0
+      IPC::Run3 0
+      IPC::System::Simple 0
+      List::MoreUtils 0
+      Log::Any 0
+      Moo 0
+      Moo::Role 0
+      Scalar::Util 0
+      Test::Builder 0
+      Text::Diff 0
+      Text::Diff::Table 0
+      Text::ParseWords 0
+      Time::Duration::Parse 0
+      Try::Tiny 0
+      base 0
+      constant 0
+      strict 0
+      vars 0
+      warnings 0
   Config-Any-0.26
     pathname: B/BR/BRICAS/Config-Any-0.26.tar.gz
     provides:
@@ -835,6 +905,19 @@ DISTRIBUTIONS
       File::Spec::Functions 0
       FileHandle 0
       IO::File 0
+  Config-INI-0.025
+    pathname: R/RJ/RJBS/Config-INI-0.025.tar.gz
+    provides:
+      Config::INI 0.025
+      Config::INI::Reader 0.025
+      Config::INI::Writer 0.025
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      Mixin::Linewise::Readers 0.105
+      Mixin::Linewise::Writers 0
+      strict 0
+      warnings 0
   Context-Preserve-0.01
     pathname: J/JR/JROCKWAY/Context-Preserve-0.01.tar.gz
     provides:
@@ -2141,6 +2224,15 @@ DISTRIBUTIONS
       overload 0
       strict 0
       warnings 0
+  Exporter-Lite-0.07
+    pathname: N/NE/NEILB/Exporter-Lite-0.07.tar.gz
+    provides:
+      Exporter::Lite 0.07
+    requirements:
+      ExtUtils::MakeMaker 6.3
+      perl 5.006
+      strict 0
+      warnings 0
   Exporter-Tiny-0.042
     pathname: T/TO/TOBYINK/Exporter-Tiny-0.042.tar.gz
     provides:
@@ -2311,6 +2403,19 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.11
       File::Spec 0
       IO::Dir 0
+  File-Slurp-Tiny-0.004
+    pathname: L/LE/LEONT/File-Slurp-Tiny-0.004.tar.gz
+    provides:
+      File::Slurp::Tiny 0.004
+    requirements:
+      Carp 0
+      Exporter 5.57
+      ExtUtils::MakeMaker 0
+      File::Spec::Functions 0
+      FileHandle 0
+      perl 5.008001
+      strict 0
+      warnings 0
   File-Which-1.19
     pathname: P/PL/PLICEASE/File-Which-1.19.tar.gz
     provides:
@@ -2318,6 +2423,14 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.006
+  File-Zglob-0.11
+    pathname: T/TO/TOKUHIROM/File-Zglob-0.11.tar.gz
+    provides:
+      File::Zglob 0.11
+    requirements:
+      ExtUtils::MakeMaker 6.59
+      Test::More 0.96
+      perl 5.008008
   Filesys-Notify-Simple-0.12
     pathname: M/MI/MIYAGAWA/Filesys-Notify-Simple-0.12.tar.gz
     provides:
@@ -2343,6 +2456,12 @@ DISTRIBUTIONS
       overload 0
       strict 0
       warnings 0
+  Guard-1.023
+    pathname: M/ML/MLEHMANN/Guard-1.023.tar.gz
+    provides:
+      Guard 1.023
+    requirements:
+      ExtUtils::MakeMaker 0
   HTML-Escape-1.09
     pathname: T/TO/TOKUHIROM/HTML-Escape-1.09.tar.gz
     provides:
@@ -2783,6 +2902,31 @@ DISTRIBUTIONS
       IO::WrapTie::Slave 2.111
     requirements:
       ExtUtils::MakeMaker 0
+  IPC-Run3-0.048
+    pathname: R/RJ/RJBS/IPC-Run3-0.048.tar.gz
+    provides:
+      IPC::Run3 0.048
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0.31
+      Time::HiRes 0
+      Win32 0
+      Win32::ShellQuote 0
+  IPC-System-Simple-1.25
+    pathname: P/PJ/PJF/IPC-System-Simple-1.25.tar.gz
+    provides:
+      IPC::System::Simple 1.25
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.30
+      List::Util 0
+      POSIX 0
+      Scalar::Util 0
+      constant 0
+      re 0
+      strict 0
+      warnings 0
   Import-Into-1.002005
     pathname: H/HA/HAARG/Import-Into-1.002005.tar.gz
     provides:
@@ -2994,6 +3138,36 @@ DISTRIBUTIONS
       IPC::Cmd 0
       XSLoader 0
       base 0
+  Log-Any-1.032
+    pathname: D/DA/DAGOLDEN/Log-Any-1.032.tar.gz
+    provides:
+      Log::Any 1.032
+      Log::Any::Adapter 1.032
+      Log::Any::Adapter::Base 1.032
+      Log::Any::Adapter::File 1.032
+      Log::Any::Adapter::Null 1.032
+      Log::Any::Adapter::Stderr 1.032
+      Log::Any::Adapter::Stdout 1.032
+      Log::Any::Adapter::Test 1.032
+      Log::Any::Adapter::Util 1.032
+      Log::Any::Manager 1.032
+      Log::Any::Proxy 1.032
+      Log::Any::Proxy::Test 1.032
+      Log::Any::Test 1.032
+    requirements:
+      B 0
+      Carp 0
+      Data::Dumper 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.17
+      Fcntl 0
+      IO::File 0
+      Test::Builder 0
+      base 0
+      constant 0
+      perl 5.008001
+      strict 0
+      warnings 0
   MIME-Types-2.12
     pathname: M/MA/MARKOV/MIME-Types-2.12.tar.gz
     provides:
@@ -3071,6 +3245,21 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       Memoize 0.52
+  Mixin-Linewise-0.108
+    pathname: R/RJ/RJBS/Mixin-Linewise-0.108.tar.gz
+    provides:
+      Mixin::Linewise 0.108
+      Mixin::Linewise::Readers 0.108
+      Mixin::Linewise::Writers 0.108
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      IO::File 0
+      PerlIO::utf8_strict 0
+      Sub::Exporter 0
+      perl 5.008001
+      strict 0
+      warnings 0
   Module-Build-0.4214
     pathname: L/LE/LEONT/Module-Build-0.4214.tar.gz
     provides:
@@ -4282,6 +4471,16 @@ DISTRIBUTIONS
       overload 0
       parent 0
       strict 0
+  PerlIO-utf8_strict-0.006
+    pathname: L/LE/LEONT/PerlIO-utf8_strict-0.006.tar.gz
+    provides:
+      PerlIO::utf8_strict 0.006
+    requirements:
+      ExtUtils::MakeMaker 0
+      XSLoader 0
+      perl 5.008
+      strict 0
+      warnings 0
   Plack-1.0038
     pathname: M/MI/MIYAGAWA/Plack-1.0038.tar.gz
     provides:
@@ -5197,6 +5396,17 @@ DISTRIBUTIONS
       Test::More 0
       Test::use::ok 0
       Tie::RefHash 0
+  Time-Duration-Parse-0.13
+    pathname: N/NE/NEILB/Time-Duration-Parse-0.13.tar.gz
+    provides:
+      Time::Duration::Parse 0.13
+    requirements:
+      Carp 0
+      Exporter::Lite 0
+      ExtUtils::MakeMaker 0
+      perl 5.006
+      strict 0
+      warnings 0
   Time-Warp-0.52
     pathname: S/SZ/SZABGAB/Time-Warp-0.52.tar.gz
     provides:
@@ -5486,6 +5696,12 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Win32::API 0.2
       enum 0
+  Win32-ShellQuote-0.002003
+    pathname: H/HA/HAARG/Win32-ShellQuote-0.002003.tar.gz
+    provides:
+      Win32::ShellQuote 0.002003
+    requirements:
+      perl 5.006
   Win32-TieRegistry-0.29
     pathname: C/CH/CHORNY/Win32-TieRegistry-0.29.tar.gz
     provides:
