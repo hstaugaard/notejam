@@ -64,7 +64,9 @@ sub delete : Chained('pad') : Args(0) {    ## no critic (ProhibitBuiltinHomonyms
     my ($self, $c) = @_;
     if ($c->req->method eq 'POST') {
         $c->stash->{pad}->delete;
-        return $c->res->redirect($c->uri_for_action('/notes/all'));
+        return $c->res->redirect(
+            $c->uri_for_action('/notes/all', {mid => $c->set_status_msg('Pad is successfully deleted')}));
+
     }
 }
 

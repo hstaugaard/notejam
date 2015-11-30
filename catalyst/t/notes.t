@@ -121,6 +121,7 @@ subtest q/Note can be deleted by its owner/ => sub {
     $mech->content_contains('Are you sure');
     $mech->click;
     $mech->content_lacks($note_name);
+    $mech->content_contains('Note is successfully deleted');
     $note->discard_changes; # refresh row object
     ok(!$note->in_storage, 'Note deleted');
 };

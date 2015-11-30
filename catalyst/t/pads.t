@@ -103,6 +103,7 @@ subtest q/Pad can be deleted by its owner/ => sub {
     $mech->content_contains('Are you sure');
     $mech->click;
     $mech->content_lacks($pad_name);
+    $mech->content_contains('Pad is successfully deleted');
     $pad->discard_changes; # refresh row object
     ok(!$pad->in_storage, 'Pad deleted');
 };

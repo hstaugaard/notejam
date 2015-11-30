@@ -63,10 +63,11 @@ sub delete : Chained('note') : Args(0) {    ## no critic (ProhibitBuiltinHomonym
     if ($c->req->method eq 'POST') {
         my $note = $c->stash->{note};
         $note->delete;
+        my $message = {mid => $c->set_status_msg('Note is successfully deleted')};
         if (my $pad_id = $note->pad_id) {
-            return $c->res->redirect($c->uri_for_action('/pads/view', [$pad_id]));
+            return $c->res->redirect($c->uri_for_action('/pads/view', [$pad_id], $message));
         } else {
-            return $c->res->redirect($c->uri_for_action('/notes/all'));
+            return $c->res->redirect($c->uri_for_action('/notes/all', $message));
         }
     }
 }
