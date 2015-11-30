@@ -3,6 +3,7 @@ package NoteJam::Controller::Pads;
 use Moose;
 use namespace::autoclean;
 use NoteJam::Form::Pad;
+use HTTP::Status qw/:constants/;
 
 BEGIN {extends 'Catalyst::Controller'}
 
@@ -28,6 +29,11 @@ sub create :Local :Args(0) {
 sub pad :PathPrefix :Chained :CaptureArgs(1) {
     my ($self, $c, $pad_id) = @_;
     my $pad = $c->user->find_related('pads', $pad_id);
+    if (!$pad) {
+        $c->res->status(HTTP_NOT_FOUND);
+        $c->res->body('No such pad');
+        $c->detach;
+    }
     $c->stash(
         pad        => $pad,
         note_count => $pad->notes->count,

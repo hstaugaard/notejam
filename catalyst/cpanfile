@@ -20,6 +20,7 @@ requires 'DBIx::Class::EncodedColumn';
 requires 'DBIx::Class::TimeStamp';
 requires 'HTML::FormHandler';
 requires 'HTML::FormHandler::Model::DBIC';
+requires 'HTTP::Status';
 requires 'Moose';
 requires 'namespace::autoclean';
 requires 'Plack::Middleware::XSRFBlock';

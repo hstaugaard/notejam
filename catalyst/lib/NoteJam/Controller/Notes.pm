@@ -3,6 +3,7 @@ package NoteJam::Controller::Notes;
 use Moose;
 use namespace::autoclean;
 use NoteJam::Form::Note;
+use HTTP::Status qw/:constants/;
 
 BEGIN {extends 'Catalyst::Controller'}
 
@@ -38,7 +39,13 @@ sub create :Local :Args(0) {
 
 sub note :PathPrefix :Chained :CaptureArgs(1) {
     my ($self, $c, $note_id) = @_;
-    $c->stash(note => $c->user->find_related('notes', $note_id));
+    my $note = $c->user->find_related('notes', $note_id);
+    if (!$note) {
+        $c->res->status(HTTP_NOT_FOUND);
+        $c->res->body('No such note');
+        $c->detach;
+    }
+    $c->stash(note => $note);
 }
 
 sub view :PathPart('') :Chained('note') :Args(0) {}
