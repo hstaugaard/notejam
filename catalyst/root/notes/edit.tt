@@ -1,4 +1,4 @@
-[% page_title = f.field('name').value || 'New note' %]
+[% page_title = note.in_storage ? note.name : 'New note' %]
 [% INCLUDE _pads.tt %]
 <div class="thirteen columns content-area">
     <form class="note" method="post" action="[% c.uri_for(c.action) %]">

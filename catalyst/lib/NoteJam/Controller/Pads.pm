@@ -27,7 +27,12 @@ sub create :Local :Args(0) {
 
 sub pad :PathPrefix :Chained :CaptureArgs(1) {
     my ($self, $c, $pad_id) = @_;
-    $c->stash(pad => $c->user->find_related('pads', $pad_id));
+    my $pad = $c->user->find_related('pads', $pad_id);
+    $c->stash(
+        pad        => $pad,
+        note_count => $pad->notes->count,
+    );
+
 }
 
 sub view :PathPart('') :Chained('pad') :Args(0) {

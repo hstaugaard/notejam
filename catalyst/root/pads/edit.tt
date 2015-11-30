@@ -1,11 +1,11 @@
-[% page_title = f.field('name').value || 'New pad' %]
+[% page_title = pad.in_storage ? pad.name _ ' (' _ note_count _ ')' : 'New pad' %]
 [% INCLUDE _pads.tt %]
 <div class="thirteen columns content-area">
     <form class="pad" method="post" action="[% c.uri_for(c.action) %]">
         [% f.field('name').render %]
         <input type="submit" value="Save">
     </form>
-    [% IF f.item.in_storage %]
-        <a class="red" href="[% c.uri_for_action('/pads/delete', [f.item.id]) %]">Delete pad</a>
+    [% IF pad.in_storage %]
+        <a class="red" href="[% c.uri_for_action('/pads/delete', [pad.id]) %]">Delete pad</a>
     [% END %]
 </div>
