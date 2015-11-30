@@ -8,7 +8,7 @@ __PACKAGE__->load_components(qw/EncodedColumn/);
 __PACKAGE__->table('users');
 __PACKAGE__->add_columns(
     id       => {data_type => 'integer', is_auto_increment => 1},
-    email    => {data_type => 'varchar', size              => 75},
+    email    => {data_type => 'varchar', size => 75},
     password => {
         data_type           => 'text',
         size                => 128,
