@@ -670,6 +670,12 @@ DISTRIBUTIONS
       Test::Exception 0.31
       Test::More 0.88
       perl 5.006
+  Class-Accessor-Lite-0.08
+    pathname: K/KA/KAZUHO/Class-Accessor-Lite-0.08.tar.gz
+    provides:
+      Class::Accessor::Lite 0.08
+    requirements:
+      ExtUtils::MakeMaker 6.36
   Class-C3-0.30
     pathname: H/HA/HAARG/Class-C3-0.30.tar.gz
     provides:
@@ -848,10 +854,10 @@ DISTRIBUTIONS
       Module::Build 0.38
       URI::Escape 0
       perl 5.008001
-  Cpanel-JSON-XS-3.0204
-    pathname: R/RU/RURBAN/Cpanel-JSON-XS-3.0204.tar.gz
+  Cpanel-JSON-XS-3.0205
+    pathname: R/RU/RURBAN/Cpanel-JSON-XS-3.0205.tar.gz
     provides:
-      Cpanel::JSON::XS 3.0204
+      Cpanel::JSON::XS 3.0205
     requirements:
       ExtUtils::MakeMaker 0
       Pod::Text 2.08
@@ -2337,6 +2343,24 @@ DISTRIBUTIONS
       overload 0
       strict 0
       warnings 0
+  HTML-Escape-1.09
+    pathname: T/TO/TOKUHIROM/HTML-Escape-1.09.tar.gz
+    provides:
+      HTML::Escape 1.09
+      HTML::Escape::PurePerl undef
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      Devel::PPPort 3.20
+      Exporter 0
+      ExtUtils::CBuilder 0
+      Module::Build 0.4005
+      Module::Build::Pluggable::PPPort 0.04
+      Test::More 0.98
+      Test::Requires 0
+      XSLoader 0
+      parent 0
+      perl 5.008008
   HTML-Form-6.03
     pathname: G/GA/GAAS/HTML-Form-6.03.tar.gz
     provides:
@@ -3097,6 +3121,42 @@ DISTRIBUTIONS
       Text::ParseWords 0
       perl 5.008000
       version 0.87
+  Module-Build-Pluggable-0.10
+    pathname: T/TO/TOKUHIROM/Module-Build-Pluggable-0.10.tar.gz
+    provides:
+      Module::Build::Pluggable 0.10
+      Module::Build::Pluggable::Base undef
+      Module::Build::Pluggable::GithubMeta undef
+      Module::Build::Pluggable::Repository 0.10
+      Module::Build::Pluggable::Util undef
+      Test::Module::Build::Pluggable undef
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      Class::Accessor::Lite 0
+      Class::Method::Modifiers 0
+      Data::OptList 0
+      File::Basename 0
+      File::Path 0
+      File::Temp 0
+      Module::Build 0.38
+      Module::Load 0
+      Test::SharedFork 0
+      parent 0
+      perl 5.008001
+  Module-Build-Pluggable-PPPort-0.04
+    pathname: T/TO/TOKUHIROM/Module-Build-Pluggable-PPPort-0.04.tar.gz
+    provides:
+      Module::Build::Pluggable::PPPort 0.04
+    requirements:
+      Class::Accessor::Lite 0
+      Devel::PPPort 3.19
+      Module::Build 0.38
+      Module::Build::Pluggable 0.03
+      Test::More 0.98
+      Test::Requires 0
+      parent 0
+      perl 5.008001
   Module-Build-Tiny-0.039
     pathname: L/LE/LEONT/Module-Build-Tiny-0.039.tar.gz
     provides:
@@ -4222,12 +4282,12 @@ DISTRIBUTIONS
       overload 0
       parent 0
       strict 0
-  Plack-1.0037
-    pathname: M/MI/MIYAGAWA/Plack-1.0037.tar.gz
+  Plack-1.0038
+    pathname: M/MI/MIYAGAWA/Plack-1.0038.tar.gz
     provides:
       HTTP::Message::PSGI undef
       HTTP::Server::PSGI undef
-      Plack 1.0037
+      Plack 1.0038
       Plack::App::CGIBin undef
       Plack::App::Cascade undef
       Plack::App::Directory undef
@@ -4286,9 +4346,9 @@ DISTRIBUTIONS
       Plack::Middleware::XFramework undef
       Plack::Middleware::XSendfile undef
       Plack::Recursive::ForwardRequest undef
-      Plack::Request 1.0037
+      Plack::Request 1.0038
       Plack::Request::Upload undef
-      Plack::Response 1.0037
+      Plack::Response 1.0038
       Plack::Runner undef
       Plack::TempBuffer undef
       Plack::Test undef
@@ -4309,7 +4369,7 @@ DISTRIBUTIONS
       File::ShareDir::Install 0.06
       Filesys::Notify::Simple 0
       HTTP::Body 1.06
-      HTTP::Headers::Fast 0.18
+      HTTP::Headers::Fast 0.20
       HTTP::Message 5.814
       HTTP::Tiny 0.034
       Hash::MultiValue 0.05
@@ -4320,6 +4380,48 @@ DISTRIBUTIONS
       URI 1.59
       parent 0
       perl 5.008001
+  Plack-Middleware-Debug-0.16
+    pathname: M/MI/MIYAGAWA/Plack-Middleware-Debug-0.16.tar.gz
+    provides:
+      Plack::Middleware::Debug 0.16
+      Plack::Middleware::Debug::Base 0.16
+      Plack::Middleware::Debug::CatalystLog 0.16
+      Plack::Middleware::Debug::DBITrace 0.16
+      Plack::Middleware::Debug::Environment 0.16
+      Plack::Middleware::Debug::Memory 0.16
+      Plack::Middleware::Debug::ModuleVersions 0.16
+      Plack::Middleware::Debug::Panel undef
+      Plack::Middleware::Debug::Parameters undef
+      Plack::Middleware::Debug::PerlConfig 0.16
+      Plack::Middleware::Debug::Response 0.16
+      Plack::Middleware::Debug::Session undef
+      Plack::Middleware::Debug::Timer 0.16
+      Plack::Middleware::Debug::TrackObjects undef
+    requirements:
+      Class::Method::Modifiers 1.05
+      Data::Dump 0
+      Encode 2.23
+      File::ShareDir 1.00
+      Module::Build::Tiny 0.026
+      Plack 0
+      Text::MicroTemplate 0.15
+      parent 0
+      perl 5.008001
+  Plack-Middleware-Debug-CatalystStash-0.001002
+    pathname: M/MA/MARKELLIS/Plack-Middleware-Debug-CatalystStash-0.001002.tar.gz
+    provides:
+      Plack::Middleware::Debug::CatalystStash 0.001002
+    requirements:
+      Catalyst 5.90050
+      Catalyst::Test 0
+      Class::Method::Modifiers 0
+      Data::Dumper 0
+      ExtUtils::MakeMaker 6.59
+      FindBin 0
+      HTML::Entities 0
+      Plack::Middleware::Debug 0
+      Test::More 0.94
+      perl 5.008
   Plack-Middleware-FixMissingBodyInRedirect-0.12
     pathname: S/SW/SWEETKID/Plack-Middleware-FixMissingBodyInRedirect-0.12.tar.gz
     provides:
@@ -4369,6 +4471,23 @@ DISTRIBUTIONS
       Test::More 0
       parent 0
       perl 5.008001
+  Plack-Middleware-XSRFBlock-0.0.11
+    pathname: C/CH/CHISEL/Plack-Middleware-XSRFBlock-0.0.11.tar.gz
+    provides:
+      Plack::Middleware::XSRFBlock 0.000011
+    requirements:
+      Digest::HMAC_SHA1 0
+      ExtUtils::MakeMaker 0
+      HTML::Escape 0
+      HTML::Parser 0
+      HTTP::Status 0
+      Plack::Middleware 0
+      Plack::Response 0
+      Plack::Util 0
+      Plack::Util::Accessor 0
+      parent 0
+      strict 0
+      warnings 0
   Plack-Test-ExternalServer-0.02
     pathname: E/ET/ETHER/Plack-Test-ExternalServer-0.02.tar.gz
     provides:
@@ -4756,10 +4875,10 @@ DISTRIBUTIONS
       File::Temp 0.12
       Scalar::Util 0
       Test::LeakTrace 0
-  Test-Deep-0.119
-    pathname: R/RJ/RJBS/Test-Deep-0.119.tar.gz
+  Test-Deep-1.120
+    pathname: R/RJ/RJBS/Test-Deep-1.120.tar.gz
     provides:
-      Test::Deep 0.119
+      Test::Deep 1.120
       Test::Deep::All undef
       Test::Deep::Any undef
       Test::Deep::Array undef
@@ -4785,6 +4904,7 @@ DISTRIBUTIONS
       Test::Deep::MM undef
       Test::Deep::Methods undef
       Test::Deep::NoTest undef
+      Test::Deep::None undef
       Test::Deep::Number undef
       Test::Deep::Obj undef
       Test::Deep::Ref undef
@@ -5018,6 +5138,17 @@ DISTRIBUTIONS
       Text::Glob 0.09
     requirements:
       Test::More 0
+  Text-MicroTemplate-0.24
+    pathname: K/KA/KAZUHO/Text-MicroTemplate-0.24.tar.gz
+    provides:
+      Text::MicroTemplate 0.24
+      Text::MicroTemplate::EncodedString 0.24
+      Text::MicroTemplate::File undef
+    requirements:
+      ExtUtils::MakeMaker 6.59
+      File::Temp 0
+      Test::More 0
+      perl 5.00800
   Text-SimpleTable-2.03
     pathname: M/MR/MRAMBERG/Text-SimpleTable-2.03.tar.gz
     provides:
@@ -5116,16 +5247,16 @@ DISTRIBUTIONS
       Time::Zone 2.24
     requirements:
       ExtUtils::MakeMaker 0
-  Tree-Simple-1.25
-    pathname: R/RS/RSAVAGE/Tree-Simple-1.25.tgz
+  Tree-Simple-1.26
+    pathname: R/RS/RSAVAGE/Tree-Simple-1.26.tgz
     provides:
-      Tree::Simple 1.25
-      Tree::Simple::Visitor 1.25
+      Tree::Simple 1.26
+      Tree::Simple::Visitor 1.26
     requirements:
-      Module::Build 0.4
+      ExtUtils::MakeMaker 0
       Scalar::Util 1.18
       Test::Exception 0.15
-      Test::More 0.47
+      Test::More 1.001014
       constant 0
       strict 0
       warnings 0
