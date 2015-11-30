@@ -19,9 +19,10 @@ extends 'Catalyst';
 our $VERSION = '0.01';
 
 __PACKAGE__->config(
-    name          => 'NoteJam',
-    default_view  => 'HTML',
-    default_model => 'NoteJam::User',
+    name            => 'NoteJam',
+    default_view    => 'HTML',
+    default_model   => 'NoteJam::User',
+    psgi_middleware => ['XSRFBlock'],
     'Plugin::SmartURI' => {
         disposition => 'relative',
     },

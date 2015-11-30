@@ -1,0 +1,10 @@
+psgi_middleware:
+    - XSRFBlock
+    - Debug
+    - Debug::Environment
+    - Debug::Response
+    - Debug::Session
+    - Debug::DBITrace
+    - Debug::Parameters
+    - Debug::CatalystLog
+    - Debug::CatalystStash

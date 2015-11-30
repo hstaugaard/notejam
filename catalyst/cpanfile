@@ -22,8 +22,12 @@ requires 'HTML::FormHandler';
 requires 'HTML::FormHandler::Model::DBIC';
 requires 'Moose';
 requires 'namespace::autoclean';
+requires 'Plack::Middleware::XSRFBlock';
 requires 'URI::SmartURI';
 requires 'YAML';
 
 test_requires 'Test::More';
 test_requires 'Test::WWW::Mechanize::Catalyst';
+
+author_requires 'Plack::Middleware::Debug';
+author_requires 'Plack::Middleware::Debug::CatalystStash';
