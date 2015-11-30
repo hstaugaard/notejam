@@ -22,11 +22,13 @@ has_field password => (
 
 sub validate {
     my $self = shift;
-    return if $self->has_errors; # Only check if fields are valid
-    $self->authenticator->authenticate({
-        email    => $self->field('email')->value,
-        password => $self->field('password')->value,
-    });
+    return if $self->has_errors;    # Only check if fields are valid
+    $self->authenticator->authenticate(
+        {
+            email    => $self->field('email')->value,
+            password => $self->field('password')->value,
+        }
+    );
     if (!$self->authenticator->user_exists) {
         $self->add_form_error('Wrong email or password');
     }

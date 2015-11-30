@@ -1,0 +1,7 @@
+[PerlTidy]
+select = {lib,y}/**/*.{pm,t}
+
+[PerlCritic]
+select = {lib,t}/**/*.{pm,t}
+argv = --brutal
+

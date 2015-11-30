@@ -21,7 +21,7 @@ has_field pad => (
 sub options_pad {
     my $self = shift;
     return map {$_->id => $_->name} $self->item->user->pads;
-};
+}
 
 sub hide_field_errors {
     my ($self, $hide) = @_;

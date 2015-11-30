@@ -1,0 +1,13 @@
+--maximum-line-length=100
+--variable-maximum-line-length
+--output-line-ending=unix
+--nooutdent-long-lines
+--all-containers-tightness=2
+--cuddled-else
+--opening-token-right
+--opening-hash-brace-right
+--opening-paren-right
+--opening-square-bracket-right
+--notrim-qw
+--converge
+--break-at-old-comma-breakpoints

@@ -7,7 +7,7 @@ use HTTP::Status qw/:constants/;
 
 BEGIN {extends 'Catalyst::Controller'}
 
-sub auto :Private {
+sub auto : Private {
     my ($self, $c) = @_;
     if (!$c->user_exists) {
         $c->res->redirect($c->uri_for_action('/signin'));
@@ -16,7 +16,7 @@ sub auto :Private {
     return 1;
 }
 
-sub create :Local :Args(0) {
+sub create : Local : Args(0) {
     my ($self, $c) = @_;
     $c->stash(
         pad      => $c->user->new_related('pads', {}),
@@ -26,7 +26,7 @@ sub create :Local :Args(0) {
     $c->detach('form');
 }
 
-sub pad :PathPrefix :Chained :CaptureArgs(1) {
+sub pad : PathPrefix : Chained : CaptureArgs(1) {
     my ($self, $c, $pad_id) = @_;
     my $pad = $c->user->find_related('pads', $pad_id);
     if (!$pad) {
@@ -41,7 +41,7 @@ sub pad :PathPrefix :Chained :CaptureArgs(1) {
 
 }
 
-sub view :PathPart('') :Chained('pad') :Args(0) {
+sub view : PathPart('') : Chained('pad') : Args(0) {
     my ($self, $c) = @_;
     $c->load_status_msgs;
     my $order;
@@ -52,15 +52,15 @@ sub view :PathPart('') :Chained('pad') :Args(0) {
     $c->stash(notes => [$c->stash->{pad}->notes->search(undef, {order_by => $order})]);
 }
 
-sub edit :Chained('pad') :Args(0) {
+sub edit : Chained('pad') : Args(0) {
     my ($self, $c) = @_;
     $c->stash(
-        message  => 'Pad is successfully updated',
+        message => 'Pad is successfully updated',
     );
     $c->detach('form');
 }
 
-sub delete :Chained('pad') :Args(0) { ## no critic (ProhibitBuiltinHomonyms)
+sub delete : Chained('pad') : Args(0) {    ## no critic (ProhibitBuiltinHomonyms)
     my ($self, $c) = @_;
     if ($c->req->method eq 'POST') {
         $c->stash->{pad}->delete;
@@ -68,15 +68,17 @@ sub delete :Chained('pad') :Args(0) { ## no critic (ProhibitBuiltinHomonyms)
     }
 }
 
-sub form :Private {
+sub form : Private {
     my ($self, $c) = @_;
     my $form = NoteJam::Form::Pad->new(item => $c->stash->{pad});
     if ($form->process(params => $c->req->params)) {
-        return $c->res->redirect($c->uri_for_action(
-            '/pads/view',
-            [$form->item->id],
-            {mid => $c->set_status_msg($c->stash->{message})},
-        ));
+        return $c->res->redirect(
+            $c->uri_for_action(
+                '/pads/view',
+                [$form->item->id],
+                {mid => $c->set_status_msg($c->stash->{message})},
+            )
+        );
     }
     $c->stash(f => $form);
 }

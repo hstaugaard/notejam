@@ -8,7 +8,7 @@ __PACKAGE__->table('pads');
 __PACKAGE__->add_columns(
     id      => {data_type => 'integer', is_auto_increment => 1},
     user_id => {data_type => 'integer'},
-    name    => {data_type => 'varchar', size => 100},
+    name    => {data_type => 'varchar', size              => 100},
 );
 __PACKAGE__->set_primary_key('id');
 __PACKAGE__->has_many(notes => 'NoteJam::Schema::Result::Note', 'pad_id');

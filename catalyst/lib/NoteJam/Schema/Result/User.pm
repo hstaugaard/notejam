@@ -8,7 +8,7 @@ __PACKAGE__->load_components(qw/EncodedColumn/);
 __PACKAGE__->table('users');
 __PACKAGE__->add_columns(
     id       => {data_type => 'integer', is_auto_increment => 1},
-    email    => {data_type => 'varchar', size => 75},
+    email    => {data_type => 'varchar', size              => 75},
     password => {
         data_type           => 'text',
         size                => 128,
@@ -20,7 +20,13 @@ __PACKAGE__->add_columns(
 );
 __PACKAGE__->set_primary_key('id');
 __PACKAGE__->add_unique_constraint('email_unique', ['email']);
-__PACKAGE__->has_many(notes => 'NoteJam::Schema::Result::Note', 'user_id', {order_by => {-asc => 'updated_at'}});
-__PACKAGE__->has_many(pads => 'NoteJam::Schema::Result::Pad', 'user_id', {order_by => {-asc => 'name'}});
+__PACKAGE__->has_many(
+    notes => 'NoteJam::Schema::Result::Note', 'user_id',
+    {order_by => {-asc => 'updated_at'}}
+);
+__PACKAGE__->has_many(
+    pads => 'NoteJam::Schema::Result::Pad', 'user_id',
+    {order_by => {-asc => 'name'}}
+);
 
 1;

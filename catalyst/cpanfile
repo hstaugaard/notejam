@@ -22,10 +22,10 @@ requires 'HTML::FormHandler';
 requires 'HTML::FormHandler::Model::DBIC';
 requires 'HTTP::Status';
 requires 'Moose';
-requires 'namespace::autoclean';
 requires 'Plack::Middleware::XSRFBlock';
 requires 'URI::SmartURI';
 requires 'YAML';
+requires 'namespace::autoclean';
 
 test_requires 'Test::More';
 test_requires 'Test::WWW::Mechanize::Catalyst';
